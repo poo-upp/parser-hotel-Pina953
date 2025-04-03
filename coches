@@ -1,0 +1,35 @@
+class Coche:
+
+    total_coches = 0
+    
+    def __init__(self, marca, modelo, año):
+        self.marca = marca
+        self.modelo = modelo
+        self.año = año
+        Coche.total_coches += 1  
+    
+    def mostrar_informacion(self):
+        
+        print(f"Marca: {self.marca}, Modelo: {self.modelo}, Año: {self.año}")
+    
+    @classmethod
+    def obtener_total_coches(cls):
+        
+        return cls.total_coches
+    
+    @staticmethod
+    def calcular_precio_final(precio_base, porcentaje_impuestos):
+        
+        impuestos = precio_base * (porcentaje_impuestos / 100)
+        return precio_base + impuestos
+    
+# Crear algunos coches
+coche1 = Coche("Toyota", "supra", 2000)
+coche2 = Coche("Honda", "Civic", 2005)
+coche3 = Coche("Ford", "Mustang", 2010)
+
+coche1.mostrar_informacion()
+print(f"Total de coches creados: {Coche.obtener_total_coches()}")
+
+precio_final = Coche.calcular_precio_final(25000, 21)
+print(f"Precio final con impuestos: {precio_final}")
